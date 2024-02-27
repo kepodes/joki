@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('riviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('game_id');
-            $table->integer('noTelp');
+            $table->foreignId('product_id');
+            $table->foreignId('user_id');
+            $table->string('noTelp');
             $table->integer('bintang');
             $table->string('rank');
             $table->text('comment');

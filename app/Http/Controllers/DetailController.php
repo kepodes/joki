@@ -14,11 +14,13 @@ class DetailController extends Controller
         }
 
         $jasa = $product->jasa;
+        $riviews = $product->riview;
         return view('detail.index',[
             'title' => $product->name,
             'product' => $product,
             'jasas' => $jasa,
-            'reqHero' => $reqHero
+            'reqHero' => $reqHero,
+            'riviews' => $riviews
         ]);
     }
 }

@@ -46,7 +46,7 @@
                                     class="fab fa-whatsapp"></i> WhatsApp Joki Arceus</a></li>
                     </ol>
                 </section>
-                <section class="bg-[#0e1f34] h-[30rem] rounded-xl hidden md:block  w-full shadow-lg overflow-hidden">
+                <section class="bg-[#0e1f34] h-[30rem] rounded-xl hidden md:block  w-full shadow-lg overflow-auto">
                     <div class="flex flex-col" >
                     <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4">
                         <div class="bg-gray-800 w-16 flex justify-center items-center">
@@ -54,20 +54,22 @@
                         </div>
                         <span class="text-lg lg:text-xl font-poppins font-bold text-white w-52 flex items-center">Ulasan Pembeli</span>
                     </header>
-                    <main class="h-full flex flex-col overflow-auto">
+                    <main class="h-full flex flex-col">
+                        @foreach ($riviews as $riview)
+                            
                         <div class="p-3 mb-3 flex flex-col">
                             <header class="grid grid-cols-2 font-poppins text-white">
-                                <p class="text-sm font-bold">089*******</p>
-                                <p class="text-sm justify-self-end">5 Bintang</p>
-                                <p class="text-sm">Rank Ini ke itu</p>
-                                <p class="justify-self-end text-sm">10-11-2023</p>
+                                <p class="text-sm font-bold">{{Str::limit($riview->noTelp,4,'********')}}</p>
+                                <p class="text-sm justify-self-end">{{$riview->bintang}} <i class="fas fa-star text-[rgb(255,215,0)]"></i></p>
+                                <p class="text-sm">{{$riview->rank}}</p>
+                                <p class="justify-self-end text-sm">{{$riview->created_at->diffForHumans()}}</p>
                             </header>
                             <main class="w-full h-fit overflow-auto font-poppins text-sm text-white mt-2">
-                                <p class="w-[295px]">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                    eveniet minus vitae ipsum quibusdam in ad incidunt consectetur ipsam ratione. Rem
-                                    obcaecati quasi iusto quidem."</p>
+                                <p class="w-[295px]">"{{$riview->comment}}"</p>
                             </main>
                         </div>
+                        
+                        @endforeach
                     </main>
                 </div>
                 </section>
@@ -79,6 +81,8 @@
             <ul class="col-span-3 flex flex-col">
                 <form class="h-fit" action="/order" method="post">
                     @csrf
+                    <input type="hidden" name="product_id" value="{{$product->id}}">
+
                     <section
                         class="bg-[#0e1f34] h-fit rounded-xl w-full shadow-lg overflow-hidden flex flex-col mb-5">
                         <header class="h-[3.5rem] w-full bg-[#142f4d] grid grid-cols-4 lg:grid-cols-12">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logging;
 use App\Models\Order;
+use App\Models\RiviewAuth;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,6 +12,7 @@ class OrderController extends Controller
     public function order(Request $request){
         $validate = $request->validate([
             'nickname' => ['required'],
+            'product_id' => ['required'],
             'logVia' => ['required'],
             'email' => ['required'],
             'password' => ['required'],

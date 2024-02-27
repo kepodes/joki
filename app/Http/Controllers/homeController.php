@@ -21,6 +21,7 @@ class homeController extends Controller
             'chat'  => chat::all()
         ]);
     }
+    
 
     public function kirimpesan(Request $request){
         $validasi = $request->validate([

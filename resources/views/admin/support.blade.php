@@ -30,7 +30,7 @@
                         {{Str::limit($chat->message,20,' (...)')}}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="/chat/{{$chat->user->id}}" class="font-medium text-blue-600 hover:underline">Chat</a>
+                        <a href="/admin/chat/{{$chat->user->id}}" class="font-medium text-blue-600 hover:underline">Chat</a>
                     </td>
                 </tr>
                 @endforeach

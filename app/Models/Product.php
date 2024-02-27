@@ -25,6 +25,10 @@ class Product extends Model
         return $this->hasMany(Jasa::class);
     }
 
+    public function riview(){
+        return $this->hasMany(Riview::class);
+    }
+
     public function scopeFilter($query, array $filters){
         $query->when($filters['product'] ?? false, function ($query, $product){
             return $query->where('name',$product);

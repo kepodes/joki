@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('customer_id')->nullable();
+            $table->integer('product_id');
             $table->string('nickname');
             $table->string('logVia');
             $table->string('email');

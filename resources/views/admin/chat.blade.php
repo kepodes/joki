@@ -21,7 +21,7 @@
             @endforeach
         </div>
         <div class="fixed bottom-0 w-full mb-2">
-            <form action="/kirimpesan" method="POST">
+            <form action="/admin/kirimpesan" method="POST">
                 @csrf
             <input type="hidden" name="to_user_id" value="{{$user->id}}">
             <input name="message" class="mx-2 w-[74%] rounded-lg" type="text">

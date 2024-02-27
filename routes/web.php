@@ -67,6 +67,8 @@ Route::post('/admin/kirimpesan','kirimpesan');
 
 Route::controller(UserDashController::class)->group(function (){
     Route::get('/user/dash','index');
+    Route::get('/user/riview','riview');
+    Route::post('/user/riview/kirim','kirimRiview');
 });
 
 // Route::view('admin','admin.index');

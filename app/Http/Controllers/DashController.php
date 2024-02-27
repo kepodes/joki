@@ -8,12 +8,15 @@ use App\Models\Logging;
 use App\Models\ongoing;
 use App\Models\Order;
 use App\Models\orderDone;
+use App\Models\RiviewAuth;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PHPMailer\PHPMailer\PHPMailer;
 use Response;
+
+use Illuminate\Support\Str;
 
 class DashController extends Controller
 {
@@ -146,6 +149,7 @@ class DashController extends Controller
         ongoing::create([
             'user_id'=>Auth::user()->id,
             'customer_id' => $orderan->customer_id,
+            'product_id' =>  $orderan->product_id,
             'nickname'=>$orderan->nickname,
             'logVia'=>$orderan->logVia,
             'email'=>$orderan->email,
@@ -173,6 +177,7 @@ class DashController extends Controller
         orderDone::create([
             'user_id'=>Auth::user()->id,
             'customer_id' => $orderan->customer_id,
+            'product_id' =>   $orderan->product_id,
             'nickname'=>$orderan->nickname,
             'logVia'=>$orderan->logVia,
             'email'=>$orderan->email,
@@ -191,6 +196,12 @@ class DashController extends Controller
             "username" => auth()->user()->username,
             "role" => auth()->user()->getRoleNames(),
             "activity" => "Menyelesaikan Order Dari : $orderan->nickname",
+        ]);
+        RiviewAuth::create([
+            "user_id" => $orderan->customer_id,
+            "product_id" => $orderan->product_id,
+            "rank" => $orderan->rank,
+            "token" => Str::random(15),
         ]);
         ongoing::destroy($orderan->id);
 

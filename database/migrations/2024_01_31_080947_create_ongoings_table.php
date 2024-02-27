@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->integer('customer_id')->nullable();
+            $table->integer('product_id');
             $table->string('nickname');
             $table->string('logVia');
             $table->string('email');

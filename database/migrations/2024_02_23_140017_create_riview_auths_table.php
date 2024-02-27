@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('riview_auths', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('game_id');
+            $table->foreignId('product_id');
+            $table->string('rank');
             $table->string('token');
             $table->timestamps();
         });
